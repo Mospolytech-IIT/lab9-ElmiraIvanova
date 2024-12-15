@@ -28,7 +28,6 @@ const Posts = () => {
         }
     };
 
-    // Удаление поста
     const deletePost = async (postId) => {
         try {
             await axios.delete(`http://127.0.0.1:8000/posts/delete/${postId}`);
