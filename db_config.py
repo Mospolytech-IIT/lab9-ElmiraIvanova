@@ -9,8 +9,6 @@ engine = create_engine(DATABASE_URL)
 
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
-# Создание таблиц в базе данных
 if __name__ == "__main__":
-    # Создаем все таблицы, определённые в моделях
     Base.metadata.create_all(engine)
     print("Таблицы Users и Posts успешно созданы.")

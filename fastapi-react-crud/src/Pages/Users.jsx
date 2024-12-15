@@ -6,7 +6,6 @@ const Users = () => {
     const [formData, setFormData] = useState({ username: "", email: "", password: "" });
     const [editingUser, setEditingUser] = useState(null);
 
-    // Получение списка пользователей с сервера
     const fetchUsers = async () => {
         try {
             const response = await axios.get("http://127.0.0.1:8000/users");
@@ -16,7 +15,6 @@ const Users = () => {
         }
     };
 
-    // Создание нового пользователя
     const createUser = async (e) => {
         e.preventDefault();
         try {
@@ -28,7 +26,6 @@ const Users = () => {
         }
     };
 
-    // Удаление пользователя
     const deleteUser = async (userId) => {
         try {
             await axios.delete(`http://127.0.0.1:8000/users/delete/${userId}`);
@@ -38,13 +35,11 @@ const Users = () => {
         }
     };
 
-    // Подготовка к редактированию пользователя
     const startEditing = (user) => {
         setEditingUser(user);
         setFormData({ username: user.username, email: user.email, password: "" });
     };
 
-    // Завершение редактирования пользователя
     const updateUser = async (e) => {
         e.preventDefault();
         if (!editingUser) return;
@@ -59,7 +54,6 @@ const Users = () => {
         }
     };
 
-    // Отмена редактирования
     const cancelEditing = () => {
         setEditingUser(null);
         setFormData({ username: "", email: "", password: "" });

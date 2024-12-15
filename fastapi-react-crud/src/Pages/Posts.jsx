@@ -6,7 +6,6 @@ const Posts = () => {
     const [formData, setFormData] = useState({ title: "", content: "", user_id: "" });
     const [editingPost, setEditingPost] = useState(null);
 
-    // Получение списка постов с сервера
     const fetchPosts = async () => {
         try {
             const response = await axios.get("http://127.0.0.1:8000/posts");
@@ -16,7 +15,6 @@ const Posts = () => {
         }
     };
 
-    // Создание нового поста
     const createPost = async (e) => {
         e.preventDefault();
         try {
@@ -40,13 +38,11 @@ const Posts = () => {
         }
     };
 
-    // Подготовка к редактированию поста
     const startEditing = (post) => {
         setEditingPost(post);
         setFormData({ title: post.title, content: post.content, user_id: post.user_id });
     };
 
-    // Завершение редактирования поста
     const updatePost = async (e) => {
         e.preventDefault();
         if (!editingPost) return;
@@ -63,7 +59,6 @@ const Posts = () => {
         }
     };
 
-    // Отмена редактирования
     const cancelEditing = () => {
         setEditingPost(null);
         setFormData({ title: "", content: "", user_id: "" });
